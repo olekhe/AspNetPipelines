@@ -1,4 +1,5 @@
 using AspNetPipelines.Middlewares;
+using System.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,15 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.UseMyMiddleware();
+
+app.Use(async (context, next) =>
+{
+    Debug.WriteLine("-- inline middleware before --");
+
+    await next();
+
+    Debug.WriteLine("-- inline middleware after --");
+});
 
 app.MapControllers();
 

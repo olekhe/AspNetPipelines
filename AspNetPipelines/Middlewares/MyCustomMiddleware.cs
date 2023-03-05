@@ -17,11 +17,11 @@ namespace AspNetPipelines.Middlewares
         {
             // some logic
 
-            Debug.WriteLine("-- before --");
+            Debug.WriteLine("-- MyCustomMiddleware before --");
 
             await this.next(context);
 
-            Debug.WriteLine("-- after --");
+            Debug.WriteLine("-- MyCustomMiddleware after --");
         }
     }
 }
