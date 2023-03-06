@@ -15,8 +15,6 @@ namespace AspNetPipelines.Middlewares
         [HttpGet]
         public async Task InvokeAsync(HttpContext context)
         {
-            // some logic
-
             Debug.WriteLine("-- MyCustomMiddleware before --");
 
             await this.next(context);

@@ -1,14 +1,17 @@
+//create host
 using AspNetPipelines.Middlewares;
-using System.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// services
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// app creation
 var app = builder.Build();
 
+// pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -19,16 +22,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.UseMyMiddleware();
-
-app.Use(async (context, next) =>
-{
-    Debug.WriteLine("-- inline middleware before --");
-
-    await next();
-
-    Debug.WriteLine("-- inline middleware after --");
-});
+app.UseMyCustomMiddleware();
 
 app.MapControllers();
 
