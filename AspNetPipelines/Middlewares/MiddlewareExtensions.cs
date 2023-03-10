@@ -7,4 +7,6 @@
             return application.UseMiddleware<MyCustomMiddleware>();
         }
     }
+
+  
 }

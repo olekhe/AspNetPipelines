@@ -12,6 +12,9 @@ namespace AspNetPipelines.Middlewares
             this.next = next;
         }
 
+
+
+
         [HttpGet]
         public async Task InvokeAsync(HttpContext context)
         {

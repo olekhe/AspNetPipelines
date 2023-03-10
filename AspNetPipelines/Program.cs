@@ -1,3 +1,4 @@
+using AspNetPipelines.Api.Middlewares;
 using AspNetPipelines.Middlewares;
 
 // create host
@@ -10,6 +11,8 @@ builder.Services.AddSwaggerGen();
 
 // app creation
 var app = builder.Build();
+
+app.UseRefererMiddleware();
 
 // pipeline
 if (app.Environment.IsDevelopment())
